@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crime RP — roleplay сервер</title>
+<style>
+  :root{
+    --bg:#0d0d10;
+    --bg2:#14141a;
+    --panel:#1b1b23;
+    --line:#2a2a34;
+    --txt:#e8e6e0;
+    --muted:#9b978e;
+    --amber:#f5a623;
+    --amber2:#ffc24d;
+    --red:#e5484d;
+    --green:#38c172;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--txt);
+    font-family:"Segoe UI",system-ui,Arial,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+
+  /* TOP BAR */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(13,13,16,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+  .logo .badge{
+    width:34px;height:34px;border-radius:8px;
+    background:linear-gradient(135deg,var(--amber),#c77d00);
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;color:#1a1200;
+  }
+  nav{display:flex;gap:22px;font-size:14px}
+  nav a{color:var(--muted);transition:color .2s;font-weight:600}
+  nav a:hover{color:var(--amber)}
+  .btn{
+    display:inline-block;padding:11px 22px;border-radius:8px;
+    font-weight:700;font-size:14px;cursor:pointer;border:none;
+    transition:transform .15s,box-shadow .2s,background .2s;
+  }
+  .btn-amber{background:linear-gradient(135deg,var(--amber2),var(--amber));color:#231500}
+  .btn-amber:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,166,35,.35)}
+  .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--txt)}
+  .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+  .btn-vk{
+    display:inline-flex;align-items:center;gap:8px;
+    background:#0077ff;color:#fff;padding:11px 20px;border-radius:8px;
+    font-weight:700;font-size:14px;transition:filter .2s,transform .15s
+  }
+  .btn-vk:hover{filter:brightness(1.1);transform:translateY(-2px)}
+
+  /* HERO */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 480px at 70% -10%,rgba(245,166,35,.16),transparent 60%),
+      radial-gradient(700px 400px at 10% 10%,rgba(229,72,77,.10),transparent 60%),
+      var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;padding-top:80px;padding-bottom:90px;align-items:center}
+  .hero .kicker{
+    display:inline-block;font-size:12px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--amber);font-weight:700;border:1px solid var(--line);
+    border-radius:50px;padding:5px 14px;margin-bottom:20px;background:rgba(245,166,35,.06)
+  }
+  .hero .hero-vk{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:36px;height:36px;border-radius:10px;background:#0077ff;color:#fff;
+    margin-left:10px;vertical-align:middle;transition:transform .15s,filter .2s
+  }
+  .hero .hero-vk:hover{transform:translateY(-2px);filter:brightness(1.1)}
+  .hero h1{font-size:clamp(30px,5vw,52px);line-height:1.05;font-weight:900;margin-bottom:18px}
+  .hero h1 span{color:var(--amber)}
+  .hero p{color:var(--muted);font-size:17px;max-width:540px;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .stat{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:20px;text-align:center;transition:transform .2s,border-color .2s}
+  .stat:hover{transform:translateY(-3px);border-color:var(--amber)}
+  .stat b{font-size:26px;color:var(--amber);display:block}
+  .stat span{font-size:13px;color:var(--muted)}
+
+  section{padding:70px 0}
+  .sec-head{margin-bottom:40px}
+  .sec-head h2{font-size:clamp(24px,3.5vw,36px);font-weight:900;margin-bottom:8px}
+  .sec-head p{color:var(--muted);max-width:600px}
+
+  /* FEATURES */
+  .features{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:26px;transition:transform .2s,border-color .2s
+  }
+  .card:hover{transform:translateY(-4px);border-color:var(--amber)}
+  .card .ic{font-size:26px;margin-bottom:12px}
+  .card h3{font-size:17px;font-weight:800;margin-bottom:8px}
+  .card p{font-size:14px;color:var(--muted)}
+
+  /* NEWS */
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .news{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    display:flex;flex-direction:column;transition:transform .2s,border-color .2s
+  }
+  .news:hover{transform:translateY(-4px);border-color:var(--amber)}
+  .news .ph{height:130px;display:flex;align-items:center;justify-content:center;font-size:40px}
+  .news .body{padding:18px;display:flex;flex-direction:column;flex:1}
+  .news time{font-size:12px;color:var(--amber);font-weight:700;letter-spacing:.5px}
+  .news h3{font-size:16px;font-weight:800;margin:8px 0}
+  .news p{font-size:13px;color:var(--muted);flex:1}
+  .news .tag{font-size:11px;color:var(--muted);}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-radius:14px;overflow:hidden}
+  .step{background:var(--panel);padding:26px;position:relative}
+  .step .num{
+    width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:18px;color:#1a1200;background:linear-gradient(135deg,var(--amber2),var(--amber));margin-bottom:14px
+  }
+  .step h3{font-size:15px;font-weight:800;margin-bottom:6px}
+  .step p{font-size:13px;color:var(--muted)}
+
+  /* FAQ */
+  .faq{background:var(--bg2);border-top:1px solid var(--line)}
+  details{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    margin-bottom:12px;overflow:hidden
+  }
+  summary{
+    cursor:pointer;padding:18px 22px;font-weight:700;font-size:15px;
+    list-style:none;display:flex;justify-content:space-between;align-items:center
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--amber);font-size:22px;font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p{padding:0 22px 20px;color:var(--muted);font-size:14px}
+
+  /* CTA */
+  .cta{
+    text-align:center;padding:90px 20px;
+    background:
+      radial-gradient(600px 300px at 50% 0,rgba(245,166,35,.14),transparent 70%),
+      var(--bg)
+  }
+  .cta h2{font-size:clamp(26px,4vw,42px);font-weight:900;margin-bottom:14px}
+  .cta p{color:var(--muted);margin-bottom:30px;max-width:520px;margin-left:auto;margin-right:auto}
+
+  footer{
+    border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:13px
+  }
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  @media(max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;padding-top:50px;padding-bottom:60px}
+    .grid,.news-grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .hero-stats{grid-template-columns:repeat(2,1fr)}
+    nav{display:none}
+  }
+  @media(max-width:460px){
+    .steps{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="logo"><span class="badge">C</span><span>Crime&nbsp;RP</span></div>
+    <nav>
+      <a href="#features">О сервере</a>
+      <a href="#news">Новости</a>
+      <a href="#steps">Как начать</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-amber" href="https://vk.ru/im/convo/2000000101?entrypoint=list_all" target="_blank" rel="noopener">Скачать</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="kicker">Ролевой проект · Crime RP</span>
+      <a href="https://vk.ru/crimerolepley" target="_blank" rel="noopener" class="hero-vk" aria-label="Открыть VK">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.16 18.5c-5.4 0-8.48-3.7-8.6-9.85h2.7c.08 4.48 2.07 6.38 3.64 6.77V8.65h2.54v3.86c1.55-.17 3.18-1.93 3.73-3.86h2.54a7.5 7.5 0 0 1-3.45 4.91 7.78 7.78 0 0 1 4.05 4.94h-2.8a4.85 4.85 0 0 0-4.07-3.53v3.53h-.3Z"/></svg>
+      </a>
+      <h1>Честная роль,<br>свободный <span>город</span></h1>
+      <p>Открытый мир, где каждый выбирает свою судьбу: бизнес, преступные группировки, работа и уличная жизнь. Играй по правилам, влияй на город и пиши свою историю.</p>
+      <div class="hero-actions">
+<a class="btn btn-amber" href="https://vk.ru/im/convo/2000000101?entrypoint=list_all" target="_blank" rel="noopener">Скачать</a>
+        <a class="btn btn-ghost" href="#steps">Как установить</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>10+</b><span>онлайн-тайм (развиваемся)</span></div>
+      <div class="stat"><b>1 мес</b><span>беспрерывной работы</span></div>
+      <div class="stat"><b>8¢</b><span>ролевых классов и фракций</span></div>
+      <div class="stat"><b>24/7</b><span>мониторинг и техподдержка</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Выбери свою роль</h2>
+      <p>Проект построен вокруг живого ролеплея: экономика, работа, конфликты и ежедневный отыгрыш. Любой выбор имеет последствия.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="ic">💼</div><h3>Бизнес и экономика</h3><p>Открой предприятие, нанимай персонал, конкурируй за рынок и развивай свою торговую империю.</p></div>
+      <div class="card"><div class="ic">🚔</div><h3>Работа и фракции</h3><p>Госслужба, полиция, скорая, такси и легальные профессии — карьерный путь для каждого игрока.</p></div>
+      <div class="card"><div class="ic">🎭</div><h3>Криминальный отыгрыш</h3><p>Группировки, разборки и подпольный мир — с жёстким соблюдением правил ролеплея и последствий.</p></div>
+      <div class="card"><div class="ic">🏠</div><h3>Недвижимость</h3><p>Покупай дома, сдавай в аренду и обустраивай личное пространство под свой образ жизни.</p></div>
+      <div class="card"><div class="ic">🚗</div><h3>Транспорт</h3><p>Широкий парк техники: от городского седана до премиальных авто и специализированной спецтехники.</p></div>
+      <div class="card"><div class="ic">🛡️</div><h3>Честная модерация</h3><p>Прозрачные правила, активные админы и справедливые наказания. Жалобы обрабатываются в 24 часа.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Новости проекта</h2>
+      <p>Анонсы изменений, события и объявления администрации.</p>
+    </div>
+    <div class="news-grid">
+      <article class="news">
+        <div class="ph" style="background:linear-gradient(135deg,#2a2a34,#1b1b23)">🏗️</div>
+        <div class="body">
+          <time>12 ОКТ 2026</time>
+          <h3>Обновление экономики</h3>
+          <p>Перебалансированы зарплаты на работах, цены на недвижимость и доходность бизнесов для стабильного игрового цикла.</p>
+          <span class="tag">#обновление</span>
+        </div>
+      </article>
+      <article class="news">
+        <div class="ph" style="background:linear-gradient(135deg,#3a3424,#1b1b23)">🚨</div>
+        <div class="body">
+          <time>28 СЕН 2026</time>
+          <h3>Новая фракция</h3>
+          <p>Открыта заявка на вступление в обновлённый департамент полиции. Набираем активных и честных игроков.</p>
+          <span class="tag">#фракция</span>
+        </div>
+      </article>
+      <article class="news">
+        <div class="ph" style="background:linear-gradient(135deg,#24333a,#1b1b23)">🎉</div>
+        <div class="body">
+          <time>14 СЕН 2026</time>
+          <h3>Осенний ивент</h3>
+          <p>Стартовал сезонный ивент с уникальными наградами, квестами и событиями на улицах города. Успейте поучаствовать.</p>
+          <span class="tag">#ивент</span>
+        </div>
+      </article>
+      <article class="news">
+        <div class="ph" style="background:linear-gradient(135deg,#3a2a1a,#1b1b23)">⚡</div>
+        <div class="body">
+          <time>29 ОКТ 2026</time>
+          <h3>Глобальное обновление</h3>
+          <p>Масштабное обновление проекта: переработана экономика, добавлены новые фракции и уникальные механики отыгрыша.</p>
+          <span class="tag">#обновление</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="steps">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Как начать играть</h2>
+      <p>Нажми на кнопку «Скачать» в самом начале, загрузи файл, введи ник — и начинай играть.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Частые вопросы</h2>
+    </div>
+    <details open>
+      <summary>Это бесплатно?</summary>
+      <p>Да, это бесплатно. Есть внутри игровой донатный магазин, но без доната можно играть.</p>
+    </details>
+    <details>
+      <summary>Какие требования к компьютеру?</summary>
+      <p>Файл весит 100 МБ, внутри игры ещё 3.2 ГБ, поэтому компьютер потянет любой.</p>
+    </details>
+    <details>
+      <summary>Можно ли играть с телефона?</summary>
+      <p>Да, официально можно играть с телефона, на ноутбуке и на компьютере.</p>
+    </details>
+    <details>
+      <summary>Что если я нарушу правила?</summary>
+      <p>Нарушения рассматривает модерация. Наказания накладываются по степени тяжести: от предупреждения до блокировки. Всё решается прозрачно.</p>
+    </details>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <h2>Готов начать свою историю?</h2>
+  <p>Присоединяйся к тысячам игроков, выбери роль и стань частью живого города уже сегодня.</p>
+  <div class="hero-actions" style="justify-content:center">
+    <a class="btn btn-amber" href="https://vk.ru/im/convo/2000000101?entrypoint=list_all" target="_blank" rel="noopener">Скачать</a>
+    <a class="btn btn-ghost" href="#steps">Сначала установить</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Crime RP. Демонстрационный сайт, не связан с официальным проектом.</span>
+    <span>Сделано для ролевой игры на Crime RP.</span>
+  </div>
+</footer>
+
+</body>
+</html>
