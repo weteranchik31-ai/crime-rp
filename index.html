@@ -95,6 +95,14 @@
     background:#12121a;color:var(--txt);font-size:14px;outline:none;transition:border-color .2s
   }
   .donat-form input:focus{border-color:var(--amber)}
+  .donat-form select{
+    width:100%;padding:11px 13px;border-radius:8px;border:1px solid var(--line);
+    background:#12121a;color:var(--txt);font-size:14px;outline:none;transition:border-color .2s;
+    cursor:pointer;-webkit-appearance:none;appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path fill='%23f5a623' d='M1 1l5 5 5-5H1z'/></svg>");
+    background-repeat:no-repeat;background-position:right 12px center
+  }
+  .donat-form select:focus{border-color:var(--amber)}
   .donat-price{
     margin:6px 0 2px;text-align:center;font-weight:800;color:var(--amber2);
     background:rgba(245,166,35,.08);border:1px dashed var(--amber);
@@ -437,7 +445,10 @@
     <div class="donat-form">
       <label>
         <span>Выбор сервера:</span>
-        <input type="text" id="donatServer" placeholder="Введи сервер">
+        <select id="donatServer">
+          <option value="" disabled selected>Выбери сервер</option>
+          <option value="WHITE">WHITE</option>
+        </select>
       </label>
       <label>
         <span>Сколько доната:</span>
