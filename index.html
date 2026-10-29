@@ -61,6 +61,26 @@
     padding:8px 16px;border-radius:8px;transition:filter .2s,transform .15s;margin-left:10px
   }
   .btn-donat:hover{filter:brightness(1.1);transform:translateY(-2px)}
+  .btn-donat{border:none;cursor:pointer}
+  .modal{
+    display:none;position:fixed;inset:0;z-index:100;align-items:center;justify-content:center;
+    background:rgba(0,0,0,.65);padding:20px
+  }
+  .modal.open{display:flex}
+  .modal-box{
+    background:var(--panel);border:1px solid var(--amber);border-radius:16px;
+    max-width:440px;width:100%;padding:30px;position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.5)
+  }
+  .modal-box h3{font-size:22px;font-weight:900;margin-bottom:18px;color:var(--amber)}
+  .donat-line{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px dashed var(--line);font-size:14px}
+  .donat-line:last-of-type{border-bottom:none}
+  .donat-line b{color:var(--txt);text-align:right}
+  .modal-close{
+    position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);
+    font-size:26px;cursor:pointer;line-height:1
+  }
+  .modal-close:hover{color:var(--amber)}
   .btn-vk{
     display:inline-flex;align-items:center;gap:8px;
     background:#0077ff;color:#fff;padding:11px 20px;border-radius:8px;
@@ -188,7 +208,7 @@
 
 <div class="topbar">
   <div class="wrap">
-    <div class="logo"><span class="badge">C</span><span>Crime&nbsp;RP</span><a class="btn btn-donat" href="https://weteranchik31-ai.github.io/crime-rp/" target="_blank" rel="noopener">Донат</a></div>
+    <div class="logo"><span class="badge">C</span><span>Crime&nbsp;RP</span><button type="button" class="btn btn-donat" onclick="openDonat()">Донат</button></div>
     <nav>
       <a href="#features">О сервере</a>
       <a href="#news">Новости</a>
@@ -334,6 +354,32 @@
     <span>Сделано для ролевой игры на Crime RP.</span>
   </div>
 </footer>
+
+<div class="modal" id="donatModal" role="dialog" aria-modal="true" aria-labelledby="donatTitle">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="closeDonat()" aria-label="Закрыть">&times;</button>
+    <h3 id="donatTitle">ДОНАТ</h3>
+    <div class="donat-line"><span>1000 BC</span><b>20 РУБЛЕЙ</b></div>
+    <div class="donat-line"><span>Номер</span><b>+7-930-090-16-50</b></div>
+    <div class="donat-line"><span>Т-Банк / Озон</span><b></b></div>
+    <div class="donat-line"><span>Скрин в ВК</span><b>@weyz1</b></div>
+  </div>
+</div>
+
+<script>
+function openDonat(){
+  document.getElementById('donatModal').classList.add('open');
+}
+function closeDonat(){
+  document.getElementById('donatModal').classList.remove('open');
+}
+document.getElementById('donatModal').addEventListener('click', function(e){
+  if(e.target === this) closeDonat();
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeDonat();
+});
+</script>
 
 </body>
 </html>
