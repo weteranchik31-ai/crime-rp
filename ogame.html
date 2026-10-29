@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/jpeg" href="img/logo.jpg">
+<title>О игре — Crime RP</title>
+<style>
+  :root{
+    --bg:#0d0d10;
+    --panel:#1b1b23;
+    --line:#2a2a34;
+    --txt:#e8e6e0;
+    --muted:#9b978e;
+    --amber:#f5a623;
+    --amber2:#ffc24d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",system-ui,Arial,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(13,13,16,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+  .logo .badge-img{width:38px;height:38px;border-radius:9px;object-fit:cover;border:1px solid var(--amber)}
+  nav{display:flex;gap:18px;font-size:14px;flex-wrap:wrap}
+  nav a{color:var(--muted);font-weight:600;transition:color .2s}
+  nav a:hover{color:var(--amber)}
+
+  .page-head{padding:70px 0 30px;text-align:center}
+  .page-head .kicker{display:inline-block;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:700;border:1px solid var(--line);border-radius:50px;padding:5px 14px;margin-bottom:18px;background:rgba(245,166,35,.06)}
+  .page-head h1{font-size:clamp(28px,4vw,40px);font-weight:900;margin-bottom:8px}
+  .page-head p{color:var(--muted);max-width:620px;margin:0 auto}
+
+  .content{padding:20px 0 80px}
+  .block{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px;margin-bottom:18px}
+  .block h2{font-size:20px;font-weight:900;color:var(--amber);margin-bottom:12px}
+  .block p{color:var(--muted);font-size:15px;margin-bottom:10px}
+  .block ul{list-style:none;padding:0}
+  .block li{padding:8px 0 8px 26px;position:relative;color:var(--txt);font-size:15px;border-bottom:1px solid var(--line);margin:0}
+  .block li:last-child{border-bottom:none}
+  .block li::before{content:"◆";position:absolute;left:0;color:var(--amber);font-size:11px;top:12px}
+
+  .back-cta{text-align:center;padding:10px 20px 70px}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  @media(max-width:900px){
+    nav{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="logo"><img class="badge-img" src="img/logo.jpg" alt="Crime RP"><span>Crime&nbsp;RP</span></div>
+    <nav>
+      <a href="index.html">Главная страница</a>
+      <a href="ogame.html">О игре</a>
+      <a href="https://host-gta-samp.samp.date/index.php" target="_blank" rel="noopener">Форум</a>
+      <a href="obzor.html">Обзор</a>
+      <a href="uslugi.html">Услуги</a>
+      <a href="servera.html">Сервера</a>
+    </nav>
+  </div>
+</div>
+
+<header class="page-head">
+  <div class="wrap">
+    <span class="kicker">О игре</span>
+    <h1>Crime RP</h1>
+    <p>Ролевой проект, где ты сам решаешь, кем стать и как прожить свою историю в большом городе.</p>
+  </div>
+</header>
+
+<section class="content">
+  <div class="wrap">
+    <div class="block">
+      <h2>Что это за игра?</h2>
+      <p>Crime RP — это многопользовательский ролевой сервер, где каждый игрок выбирает свою судьбу: от честного труженика до главаря криминальной семьи. Здесь важны живой отыгрыш, взаимодействие с игроками и последствия каждого решения.</p>
+      <p>Мир постоянно живёт: экономика, работа, недвижимость, транспорт, фракции и криминальные разборки создают атмосферу настоящего города.</p>
+    </div>
+
+    <div class="block">
+      <h2>Что можно делать</h2>
+      <ul>
+        <li>Устройся на работу и зарабатывай честные деньги</li>
+        <li>Открой и развивай свой бизнес</li>
+        <li>Вступай или создавай семью и криминальную группировку</li>
+        <li>Покупай дома, технику и обустраивай жизнь</li>
+        <li>Работай на госслужбе: полиция, скорая и другие фракции</li>
+        <li>Участвуй в ивентах и событиях проекта</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h2>Для кого эта игра</h2>
+      <p>Crime RP подойдёт всем, кто любит ролевые игры, открытые миры и свободу выбора. Вот уже месяц проект беспрерывно работает и развивается, а количество новичков растёт с каждым днём.</p>
+    </div>
+
+    <div class="block">
+      <h2>Как начать</h2>
+      <p>Скачай клиент, войди на сервер, создай персонажа и начни свой путь. Подробнее — на главной странице и в разделе «Сервера».</p>
+    </div>
+  </div>
+</section>
+
+<div class="back-cta">
+  <div class="wrap">
+    <a class="btn btn-amber" href="index.html" style="display:inline-block;padding:12px 26px;border-radius:8px;background:linear-gradient(135deg,var(--amber2),var(--amber));color:#231500;font-weight:700">Вернуться на главную</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Crime RP. Демонстрационный сайт.</span>
+    <span>Сделано для ролевой игры на Crime RP.</span>
+  </div>
+</footer>
+
+</body>
+</html>
