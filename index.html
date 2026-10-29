@@ -88,6 +88,7 @@
   .donat-submit{width:100%;justify-content:center;text-align:center}
   .donat-submit:hover{transform:none}
   .donat-hint{font-size:12px;color:var(--muted);text-align:center;line-height:1.4}
+  .donat-copied{display:none;font-size:12px;color:var(--green);text-align:center;line-height:1.4;margin-top:2px}
   .donat-line{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px dashed var(--line);font-size:14px}
   .donat-line:last-of-type{border-bottom:none}
   .donat-line b{color:var(--txt);text-align:right}
@@ -390,6 +391,7 @@
       <div class="donat-price">1000 BC - 20 рублей</div>
       <button type="button" class="btn btn-amber donat-submit" onclick="submitDonat()">Отправить</button>
       <div class="donat-hint">Чтобы задонатить, нажмите кнопку «Отправить» — и вас перекинет на моё ЛС в VK.</div>
+      <div class="donat-copied" id="donatCopied">Текст заявки скопирован — вставь его в сообщении (Ctrl+V).</div>
     </div>
   </div>
 </div>
@@ -409,8 +411,10 @@ function submitDonat(){
   if(server) msg += '\nСервер: ' + server;
   if(amount) msg += '\nСколько доната: ' + amount;
   if(nick) msg += '\nНикнейм: ' + nick;
-  if(navigator.clipboard){ navigator.clipboard.writeText(msg).catch(function(){}); }
-  window.open('https://vk.ru/im/convo/2000000101?entrypoint=list_all', '_blank');
+  if(navigator.clipboard){ navigator.clipboard.writeText(msg).then(function(){
+    document.getElementById('donatCopied').style.display='block';
+  }).catch(function(){}); }
+  window.open('https://vk.ru/weyz1', '_blank');
 }
 document.getElementById('donatModal').addEventListener('click', function(e){
   if(e.target === this) closeDonat();
