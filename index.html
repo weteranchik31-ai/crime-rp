@@ -73,6 +73,20 @@
     box-shadow:0 20px 60px rgba(0,0,0,.5)
   }
   .modal-box h3{font-size:22px;font-weight:900;margin-bottom:18px;color:var(--amber)}
+  .donat-form{display:flex;flex-direction:column;gap:14px}
+  .donat-form label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--muted);font-weight:600}
+  .donat-form input{
+    width:100%;padding:11px 13px;border-radius:8px;border:1px solid var(--line);
+    background:#12121a;color:var(--txt);font-size:14px;outline:none;transition:border-color .2s
+  }
+  .donat-form input:focus{border-color:var(--amber)}
+  .donat-price{
+    margin:6px 0 2px;text-align:center;font-weight:800;color:var(--amber2);
+    background:rgba(245,166,35,.08);border:1px dashed var(--amber);
+    border-radius:8px;padding:11px;font-size:16px;letter-spacing:.5px
+  }
+  .donat-submit{width:100%;justify-content:center;text-align:center}
+  .donat-submit:hover{transform:none}
   .donat-line{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px dashed var(--line);font-size:14px}
   .donat-line:last-of-type{border-bottom:none}
   .donat-line b{color:var(--txt);text-align:right}
@@ -359,10 +373,22 @@
   <div class="modal-box">
     <button type="button" class="modal-close" onclick="closeDonat()" aria-label="Закрыть">&times;</button>
     <h3 id="donatTitle">ДОНАТ</h3>
-    <div class="donat-line"><span>1000 BC</span><b>20 РУБЛЕЙ</b></div>
-    <div class="donat-line"><span>Номер</span><b>+7-930-090-16-50</b></div>
-    <div class="donat-line"><span>Т-Банк / Озон</span><b></b></div>
-    <div class="donat-line"><span>Скрин в ВК</span><b>@weyz1</b></div>
+    <div class="donat-form">
+      <label>
+        <span>Выбор сервера:</span>
+        <input type="text" id="donatServer" placeholder="Введи сервер">
+      </label>
+      <label>
+        <span>Сколько доната:</span>
+        <input type="text" id="donatAmount" placeholder="Введи кол-во доната">
+      </label>
+      <label>
+        <span>Никнейм:</span>
+        <input type="text" id="donatNick" placeholder="Введи свой ник">
+      </label>
+      <div class="donat-price">1000 BC - 20 рублей</div>
+      <button type="button" class="btn btn-amber donat-submit" onclick="submitDonat()">Отправить</button>
+    </div>
   </div>
 </div>
 
@@ -372,6 +398,17 @@ function openDonat(){
 }
 function closeDonat(){
   document.getElementById('donatModal').classList.remove('open');
+}
+function submitDonat(){
+  var server = document.getElementById('donatServer').value.trim();
+  var amount = document.getElementById('donatAmount').value.trim();
+  var nick = document.getElementById('donatNick').value.trim();
+  var msg = 'Заявка на донат:';
+  if(server) msg += '\nСервер: ' + server;
+  if(amount) msg += '\nСколько доната: ' + amount;
+  if(nick) msg += '\nНикнейм: ' + nick;
+  if(navigator.clipboard){ navigator.clipboard.writeText(msg).catch(function(){}); }
+  window.open('https://vk.ru/im/convo/2000000101?entrypoint=list_all', '_blank');
 }
 document.getElementById('donatModal').addEventListener('click', function(e){
   if(e.target === this) closeDonat();
