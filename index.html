@@ -130,8 +130,12 @@
     margin-left:10px;vertical-align:middle;transition:transform .15s,filter .2s
   }
   .hero .hero-vk:hover{transform:translateY(-2px);filter:brightness(1.1)}
-  .hero .hero-tiktok{background:#1b1b23;border:1px solid var(--line);color:#fff}
-  .hero .hero-tiktok:hover{border-color:#ff0050;color:#ff0050}
+  .hero .hero-tiktok{
+    background:#000;border:1px solid #000;color:#fff;
+    box-shadow:-1.5px -1.5px 0 #25F4EE,1.5px 1.5px 0 #FE2C55;
+    overflow:hidden
+  }
+  .hero .hero-tiktok:hover{transform:translateY(-2px);box-shadow:-2px -2px 0 #25F4EE,2px 2px 0 #FE2C55}
   .hero .btn-obzor{
     display:inline-block;margin-left:10px;vertical-align:middle;
     background:transparent;border:1px solid var(--amber);color:var(--amber);
