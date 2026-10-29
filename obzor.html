@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Обзор проекта — Crime RP</title>
+<style>
+  :root{
+    --bg:#0d0d10;
+    --bg2:#14141a;
+    --panel:#1b1b23;
+    --line:#2a2a34;
+    --txt:#e8e6e0;
+    --muted:#9b978e;
+    --amber:#f5a623;
+    --amber2:#ffc24d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",system-ui,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(13,13,16,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+  .logo .badge{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--amber),#c77d00);display:flex;align-items:center;justify-content:center;font-size:18px;color:#1a1200}
+  nav{display:flex;gap:22px;font-size:14px}
+  nav a{color:var(--muted);font-weight:600;transition:color .2s}
+  nav a:hover{color:var(--amber)}
+  .btn{display:inline-block;padding:11px 22px;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;border:none;transition:transform .15s,box-shadow .2s,background .2s}
+  .btn-amber{background:linear-gradient(135deg,var(--amber2),var(--amber));color:#231500}
+  .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--txt)}
+  .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+
+  .page-head{padding:70px 0 30px;text-align:center}
+  .page-head .kicker{display:inline-block;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:700;border:1px solid var(--line);border-radius:50px;padding:5px 14px;margin-bottom:18px;background:rgba(245,166,35,.06)}
+  .page-head h1{font-size:clamp(28px,4vw,40px);font-weight:900;margin-bottom:8px}
+  .page-head p{color:var(--muted);max-width:620px;margin:0 auto}
+
+  .gallery{padding:20px 0 80px}
+  .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .shot{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .25s,border-color .2s}
+  .shot:hover{transform:translateY(-4px);border-color:var(--amber)}
+  .shot img{width:100%;display:block;aspect-ratio:9/16;object-fit:cover;background:#000}
+  .shot .cap{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+  .shot .cap b{color:var(--amber2)}
+  .shot .cap span{color:var(--muted)}
+  .shot:first-child img{aspect-ratio:auto;min-height:320px}
+
+  .back-cta{text-align:center;padding:10px 20px 70px}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  @media(max-width:900px){
+    nav{display:none}
+    .shots{grid-template-columns:1fr}
+    .shot img{aspect-ratio:16/9}
+    .shot:first-child img{aspect-ratio:16/9}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="logo"><span class="badge">C</span><span>Crime&nbsp;RP</span></div>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="obzor.html">Обзор проекта</a>
+    </nav>
+    <a class="btn btn-amber" href="https://vk.ru/im/convo/2000000101?entrypoint=list_all" target="_blank" rel="noopener">Скачать</a>
+  </div>
+</div>
+
+<header class="page-head">
+  <div class="wrap">
+    <span class="kicker">Обзор проекта</span>
+    <h1>Crime RP — город живёт</h1>
+    <p>Живые моменты из игрового мира: улицы, персонажи и повседневная жизнь ролевого проекта Crime RP.</p>
+  </div>
+</header>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="shots">
+      <div class="shot">
+        <img src="img/obzor-1.png" alt="Скриншот игрового процесса Crime RP 1">
+        <div class="cap"><b>Городской день</b><span>24.10.2026</span></div>
+      </div>
+      <div class="shot">
+        <img src="img/obzor-2.png" alt="Скриншот игрового процесса Crime RP 2">
+        <div class="cap"><b>Район парковки</b><span>24.10.2026</span></div>
+      </div>
+      <div class="shot">
+        <img src="img/obzor-3.png" alt="Скриншот игрового процесса Crime RP 3">
+        <div class="cap"><b>Вечерний город</b><span>23.10.2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="back-cta">
+  <div class="wrap">
+    <a class="btn btn-amber" href="index.html">Вернуться на главную</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Crime RP. Демонстрационный сайт.</span>
+    <span>Сделано для ролевой игры на Crime RP.</span>
+  </div>
+</footer>
+
+</body>
+</html>
