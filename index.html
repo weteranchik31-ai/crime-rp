@@ -75,9 +75,18 @@
   .modal-box{
     background:var(--panel);border:1px solid var(--amber);border-radius:16px;
     max-width:440px;width:100%;padding:30px;position:relative;
-    box-shadow:0 20px 60px rgba(0,0,0,.5)
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    max-height:88vh;overflow-y:auto
   }
   .modal-box h3{font-size:22px;font-weight:900;margin-bottom:18px;color:var(--amber)}
+  .donat-shop{margin-bottom:20px;border-top:1px solid var(--line);padding-top:14px}
+  .donat-shop-title{font-size:15px;font-weight:800;color:var(--txt);margin-bottom:12px}
+  .donat-item{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line)}
+  .donat-item:last-of-type{border-bottom:none}
+  .donat-item-name{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .donat-item-name b{font-size:14px;color:var(--txt);font-weight:700}
+  .donat-item-name span{font-size:12px;color:var(--muted);line-height:1.35}
+  .donat-item-price{flex-shrink:0;font-weight:800;color:var(--amber2);background:rgba(245,166,35,.08);border:1px dashed var(--amber);border-radius:8px;padding:4px 9px;font-size:13px}
   .donat-form{display:flex;flex-direction:column;gap:14px}
   .donat-form label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--muted);font-weight:600}
   .donat-form input{
@@ -412,6 +421,15 @@
   <div class="modal-box">
     <button type="button" class="modal-close" onclick="closeDonat()" aria-label="Закрыть">&times;</button>
     <h3 id="donatTitle">ДОНАТ</h3>
+    <div class="donat-shop">
+      <p class="donat-shop-title">Что можно купить за донат?</p>
+      <div class="donat-item"><div class="donat-item-name"><b>BLACK PASS</b><span>Боевой пропуск — твой путь к эксклюзивным наградам сезона! Открывает премиальную цепочку наград</span></div><div class="donat-item-price">790 BC</div></div>
+      <div class="donat-item"><div class="donat-item-name"><b>Увеличение слотов для авто</b><span>Увеличивает количество доступных слотов для твоего транспорта</span></div><div class="donat-item-price">100 BC</div></div>
+      <div class="donat-item"><div class="donat-item-name"><b>Передача семьи игроку</b><span>Ты сможешь передать созданную тобой семью другому игроку</span></div><div class="donat-item-price">100 BC</div></div>
+      <div class="donat-item"><div class="donat-item-name"><b>Изменить название семьи</b><span>Ты сможешь сменить название своей семьи или банды</span></div><div class="donat-item-price">100 BC</div></div>
+      <div class="donat-item"><div class="donat-item-name"><b>Покупка всех лицензий</b><span>Получение всех возможных лицензий единовременно</span></div><div class="donat-item-price">150 BC</div></div>
+      <div class="donat-item"><div class="donat-item-name"><b>Снятие предупреждения</b><span>Полностью убирает одно предупреждение от администрации</span></div><div class="donat-item-price">100 BC</div></div>
+    </div>
     <div class="donat-form">
       <label>
         <span>Выбор сервера:</span>
