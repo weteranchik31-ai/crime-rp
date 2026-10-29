@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/jpeg" href="img/logo.jpg">
+<title>Реферал — Crime RP</title>
+<style>
+  :root{
+    --bg:#0d0d10;
+    --panel:#1b1b23;
+    --line:#2a2a34;
+    --txt:#e8e6e0;
+    --muted:#9b978e;
+    --amber:#f5a623;
+    --amber2:#ffc24d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",system-ui,Arial,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(13,13,16,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+  .logo .badge-img{width:38px;height:38px;border-radius:9px;object-fit:cover;border:1px solid var(--amber)}
+  nav{display:flex;gap:16px;font-size:14px;flex-wrap:wrap}
+  nav a{color:var(--muted);font-weight:600;transition:color .2s}
+  nav a:hover{color:var(--amber)}
+
+  .page-head{padding:70px 0 30px;text-align:center}
+  .page-head .kicker{display:inline-block;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:700;border:1px solid var(--line);border-radius:50px;padding:5px 14px;margin-bottom:18px;background:rgba(245,166,35,.06)}
+  .page-head h1{font-size:clamp(28px,4vw,40px);font-weight:900;margin-bottom:8px}
+  .page-head p{color:var(--muted);max-width:620px;margin:0 auto}
+
+  .content{padding:20px 0 60px}
+  .block{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px;margin-bottom:18px}
+  .block h2{font-size:20px;font-weight:900;color:var(--amber);margin-bottom:12px}
+  .block p{color:var(--muted);font-size:15px;margin-bottom:10px}
+  .block ul{list-style:none;padding:0}
+  .block li{padding:8px 0 8px 26px;position:relative;color:var(--txt);font-size:15px;border-bottom:1px solid var(--line)}
+  .block li:last-child{border-bottom:none}
+  .block li::before{content:"◆";position:absolute;left:0;color:var(--amber);font-size:11px;top:12px}
+
+  .link-box{display:flex;gap:10px;align-items:center;background:rgba(245,166,35,.06);border:1px dashed var(--amber);border-radius:10px;padding:12px 14px;margin-top:12px}
+  .link-box input{flex:1;background:transparent;border:none;color:var(--amber2);font-size:14px;outline:none;font-family:inherit}
+  .copy-btn{flex-shrink:0;background:linear-gradient(135deg,var(--amber2),var(--amber));color:#231500;border:none;border-radius:8px;padding:9px 16px;font-weight:700;font-size:13px;cursor:pointer}
+
+  .back-cta{text-align:center;padding:10px 20px 70px}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  @media(max-width:900px){
+    nav{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="logo"><img class="badge-img" src="img/logo.jpg" alt="Crime RP"><span>Crime&nbsp;RP</span></div>
+    <nav>
+      <a href="index.html">Главная страница</a>
+      <a href="ogame.html">О игре</a>
+      <a href="https://host-gta-samp.samp.date/index.php" target="_blank" rel="noopener">Форум</a>
+      <a href="obzor.html">Обзор</a>
+      <a href="uslugi.html">Услуги</a>
+      <a href="servera.html">Сервера</a>
+      <a href="referal.html">Реферал</a>
+    </nav>
+  </div>
+</div>
+
+<header class="page-head">
+  <div class="wrap">
+    <span class="kicker">Реферальная система</span>
+    <h1>Реферал</h1>
+    <p>Зови друзей на Crime RP и получай награды за каждого нового игрока.</p>
+  </div>
+</header>
+
+<section class="content">
+  <div class="wrap">
+    <div class="block">
+      <h2>Как это работает</h2>
+      <ul>
+        <li>Поделись своей реферальной ссылкой с друзьями</li>
+        <li>За каждого, кто пришёл по твоей ссылке и зарегистрировался, ты получаешь награду</li>
+        <li>Чем больше приведёшь друзей — тем больше бонусов получишь</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h2>Твоя реферальная ссылка</h2>
+      <p>Скопируй ссылку и отправь её друзьям:</p>
+      <div class="link-box">
+        <input type="text" readonly value="https://weteranchik31-ai.github.io/crime-rp/?ref=IVAN" id="refLink">
+        <button type="button" class="copy-btn" onclick="copyRef()">Скопировать</button>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>Награды</h2>
+      <ul>
+        <li>Бонусы за каждого приведённого друга</li>
+        <li>Дополнительные награды за активных игроков</li>
+        <li>Подробности уточняй у администрации</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="back-cta">
+  <div class="wrap">
+    <a class="btn btn-amber" href="index.html" style="display:inline-block;padding:12px 26px;border-radius:8px;background:linear-gradient(135deg,var(--amber2),var(--amber));color:#231500;font-weight:700">Вернуться на главную</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Crime RP. Демонстрационный сайт.</span>
+    <span>Сделано для ролевой игры на Crime RP.</span>
+  </div>
+</footer>
+
+<script>
+function copyRef(){
+  var el = document.getElementById('refLink');
+  el.select();
+  el.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(el.value);
+}
+</script>
+
+</body>
+</html>
