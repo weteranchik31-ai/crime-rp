@@ -42,10 +42,6 @@
   .block li:last-child{border-bottom:none}
   .block li::before{content:"◆";position:absolute;left:0;color:var(--amber);font-size:11px;top:12px}
 
-  .link-box{display:flex;gap:10px;align-items:center;background:rgba(245,166,35,.06);border:1px dashed var(--amber);border-radius:10px;padding:12px 14px;margin-top:12px}
-  .link-box input{flex:1;background:transparent;border:none;color:var(--amber2);font-size:14px;outline:none;font-family:inherit}
-  .copy-btn{flex-shrink:0;background:linear-gradient(135deg,var(--amber2),var(--amber));color:#231500;border:none;border-radius:8px;padding:9px 16px;font-weight:700;font-size:13px;cursor:pointer}
-
   .back-cta{text-align:center;padding:10px 20px 70px}
 
   footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:13px}
@@ -86,19 +82,8 @@
     <div class="block">
       <h2>Как это работает</h2>
       <ul>
-        <li>Поделись своей реферальной ссылкой с друзьями</li>
-        <li>За каждого, кто пришёл по твоей ссылке и зарегистрировался, ты получаешь награду</li>
         <li>Чем больше приведёшь друзей — тем больше бонусов получишь</li>
       </ul>
-    </div>
-
-    <div class="block">
-      <h2>Твоя реферальная ссылка</h2>
-      <p>Скопируй ссылку и отправь её друзьям:</p>
-      <div class="link-box">
-        <input type="text" readonly value="https://weteranchik31-ai.github.io/crime-rp/?ref=IVAN" id="refLink">
-        <button type="button" class="copy-btn" onclick="copyRef()">Скопировать</button>
-      </div>
     </div>
 
     <div class="block">
@@ -124,15 +109,6 @@
     <span>Сделано для ролевой игры на Crime RP.</span>
   </div>
 </footer>
-
-<script>
-function copyRef(){
-  var el = document.getElementById('refLink');
-  el.select();
-  el.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(el.value);
-}
-</script>
 
 </body>
 </html>
