@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/jpeg" href="img/logo.jpg">
+<title>Сервера — Crime RP</title>
+<style>
+  :root{
+    --bg:#0d0d10;
+    --bg2:#14141a;
+    --panel:#1b1b23;
+    --line:#2a2a34;
+    --txt:#e8e6e0;
+    --muted:#9b978e;
+    --amber:#f5a623;
+    --amber2:#ffc24d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",system-ui,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(13,13,16,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+  .logo .badge-img{width:38px;height:38px;border-radius:9px;object-fit:cover;border:1px solid var(--amber)}
+  nav{display:flex;gap:22px;font-size:14px}
+  nav a{color:var(--muted);font-weight:600;transition:color .2s}
+  nav a:hover{color:var(--amber)}
+  .btn{display:inline-block;padding:11px 22px;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;border:none;transition:transform .15s,box-shadow .2s,background .2s}
+  .btn-amber{background:linear-gradient(135deg,var(--amber2),var(--amber));color:#231500}
+
+  .page-head{padding:70px 0 30px;text-align:center}
+  .page-head .kicker{display:inline-block;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:700;border:1px solid var(--line);border-radius:50px;padding:5px 14px;margin-bottom:18px;background:rgba(245,166,35,.06)}
+  .page-head h1{font-size:clamp(28px,4vw,40px);font-weight:900;margin-bottom:8px}
+  .page-head p{color:var(--muted);max-width:620px;margin:0 auto}
+
+  .servers{padding:20px 0 80px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;transition:transform .2s,border-color .2s;text-align:center}
+  .card:hover{transform:translateY(-4px);border-color:var(--amber)}
+  .card .ic{font-size:32px;margin-bottom:12px}
+  .card h3{font-size:17px;font-weight:800;margin-bottom:8px}
+  .card p{font-size:14px;color:var(--muted);margin-bottom:16px}
+  .card .srv{display:inline-block;font-weight:700;color:var(--amber2);background:rgba(245,166,35,.08);border:1px dashed var(--amber);border-radius:8px;padding:5px 12px;font-size:13px}
+
+  .back-cta{text-align:center;padding:10px 20px 70px}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  @media(max-width:900px){
+    nav{display:none}
+    .grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="logo"><img class="badge-img" src="img/logo.jpg" alt="Crime RP"><span>Crime&nbsp;RP</span></div>
+    <nav>
+      <a href="index.html">Главная страница</a>
+      <a href="https://host-gta-samp.samp.date/index.php" target="_blank" rel="noopener">Форум</a>
+      <a href="obzor.html">Обзор</a>
+      <a href="uslugi.html">Услуги</a>
+      <a href="servera.html">Сервера</a>
+    </nav>
+    <a class="btn btn-amber" href="https://vk.ru/im/convo/2000000101?entrypoint=list_all" target="_blank" rel="noopener">Скачать</a>
+  </div>
+</div>
+
+<header class="page-head">
+  <div class="wrap">
+    <span class="kicker">Сервера</span>
+    <h1>Игровые сервера</h1>
+    <p>Выбери свой сервер Crime RP и начни играть. Адреса подключения увидишь в приложении после установки.</p>
+  </div>
+</header>
+
+<section class="servers">
+  <div class="wrap">
+    <div class="grid">
+      <div class="card">
+        <div class="ic">🚔</div>
+        <h3>Основной сервер</h3>
+        <p>Главный город проекта с полным функционалом и живой экономикой.</p>
+        <span class="srv">онлайн 24/7</span>
+      </div>
+      <div class="card">
+        <div class="ic">⚡</div>
+        <h3>Событийный сервер</h3>
+        <p>Площадка для ивентов, турниров и тематических событий проекта.</p>
+        <span class="srv">по расписанию</span>
+      </div>
+      <div class="card">
+        <div class="ic">🎯</div>
+        <h3>Тестовый сервер</h3>
+        <p>Место для проверки новых обновлений и знакомства с механиками.</p>
+        <span class="srv">бета</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="back-cta">
+  <div class="wrap">
+    <a class="btn btn-amber" href="index.html">Вернуться на главную</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Crime RP. Демонстрационный сайт.</span>
+    <span>Сделано для ролевой игры на Crime RP.</span>
+  </div>
+</footer>
+
+</body>
+</html>
