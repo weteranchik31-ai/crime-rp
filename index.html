@@ -450,7 +450,7 @@
       </label>
       <div class="donat-price" id="donatSelected">Не выбран пак</div>
       <button type="button" class="btn btn-amber donat-submit" onclick="submitDonat()">Отправить</button>
-      <div class="donat-hint">Выбери пак, введи ник и нажми «Отправить» — заявка скопируется, и тебя перекинет в моё ЛС VK.</div>
+      <div class="donat-hint">Выбери пак, введи ник и нажми «Отправить» — заявка скопируется, и тебя перекинет в наш VK-чат.</div>
       <div class="donat-copied" id="donatCopied">Текст заявки скопирован — вставь его в сообщении (Ctrl+V).</div>
     </div>
   </div>
@@ -478,7 +478,7 @@ function submitDonat(){
   if(navigator.clipboard){ navigator.clipboard.writeText(msg).then(function(){
     document.getElementById('donatCopied').style.display='block';
   }).catch(function(){}); }
-  window.open('https://vk.ru/weyz1', '_blank');
+  window.open('https://vk.me/join/llHSTC0ETkU4D8alajDoXpm53XZ515y4JcM=', '_blank');
 }
 document.getElementById('donatModal').addEventListener('click', function(e){
   if(e.target === this) closeDonat();
