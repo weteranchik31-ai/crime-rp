@@ -67,6 +67,11 @@
   }
   .btn-donat:hover{filter:brightness(1.1);transform:translateY(-2px)}
   .btn-donat{border:none;cursor:pointer}
+  .btn-donat-cur{
+    background:linear-gradient(135deg,#2ecc71,#27ae60);color:#fff;font-weight:700;font-size:14px;
+    padding:8px 16px;border-radius:8px;border:none;cursor:pointer;margin-left:10px;transition:filter .2s,transform .15s
+  }
+  .btn-donat-cur:hover{filter:brightness(1.1);transform:translateY(-2px)}
   .modal{
     display:none;position:fixed;inset:0;z-index:100;align-items:center;justify-content:center;
     background:rgba(0,0,0,.65);padding:20px
@@ -264,7 +269,7 @@
 
 <div class="topbar">
   <div class="wrap">
-    <div class="logo"><img class="badge-img" src="img/logo.jpg" alt="Crime RP"><span>Crime&nbsp;RP</span><button type="button" class="btn btn-donat" onclick="openDonat()">Донат</button><button type="button" class="btn btn-donat" onclick="openDonatCur()">Донат игровой валюты</button></div>
+    <div class="logo"><img class="badge-img" src="img/logo.jpg" alt="Crime RP"><span>Crime&nbsp;RP</span><button type="button" class="btn btn-donat" onclick="openDonat()">Донат</button><button type="button" class="btn btn-donat-cur" onclick="openDonatCur()">Донат игровой валюты</button></div>
     <nav>
       <a href="index.html">Главная страница</a>
       <a href="ogame.html">О игре</a>
