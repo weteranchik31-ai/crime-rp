@@ -81,6 +81,15 @@
   .modal-box h3{font-size:22px;font-weight:900;margin-bottom:18px;color:var(--amber)}
   .donat-shop{margin-bottom:20px;border-top:1px solid var(--line);padding-top:14px}
 .donat-shop-title{font-size:15px;font-weight:800;color:var(--txt);margin-bottom:12px}
+  .pack-list{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:16px}
+  .pack-btn{
+    width:100%;text-align:center;background:linear-gradient(135deg,var(--amber2),var(--amber));
+    border:1px solid var(--amber);border-radius:10px;padding:13px;
+    color:#231500;font-size:15px;cursor:pointer;transition:filter .2s,transform .15s
+  }
+  .pack-btn b{font-weight:800;color:#231500}
+  .pack-btn:hover{filter:brightness(1.05);transform:translateY(-1px)}
+  .pack-btn.selected{outline:2px solid #fff;border-color:#fff}
   .donat-form{display:flex;flex-direction:column;gap:14px}
   .donat-form label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--muted);font-weight:600}
   .donat-form input{
