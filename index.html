@@ -461,10 +461,6 @@
         </select>
       </label>
       <label>
-        <span>Сколько доната:</span>
-        <input type="text" id="donatAmount" placeholder="Введи кол-во доната">
-      </label>
-      <label>
         <span>Никнейм:</span>
         <input type="text" id="donatNick" placeholder="Введи свой ник">
       </label>
@@ -492,12 +488,10 @@ function selectPack(btn){
 }
 function submitDonat(){
   var server = document.getElementById('donatServer').value.trim();
-  var amount = document.getElementById('donatAmount').value.trim();
   var nick = document.getElementById('donatNick').value.trim();
   if(!selectedPack){ alert('Сначала выбери пак доната'); return; }
   var msg = 'Заявка на донат: ' + selectedPack;
   if(server) msg += '\nСервер: ' + server;
-  if(amount) msg += '\nСколько доната: ' + amount;
   if(nick) msg += '\nНикнейм: ' + nick;
   if(navigator.clipboard){ navigator.clipboard.writeText(msg).then(function(){
     document.getElementById('donatCopied').style.display='block';
