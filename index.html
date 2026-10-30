@@ -264,7 +264,7 @@
 
 <div class="topbar">
   <div class="wrap">
-    <div class="logo"><img class="badge-img" src="img/logo.jpg" alt="Crime RP"><span>Crime&nbsp;RP</span><button type="button" class="btn btn-donat" onclick="openDonat()">Донат</button><button type="button" class="btn btn-donat" onclick="openDonat()">Донат игровой валюты</button></div>
+    <div class="logo"><img class="badge-img" src="img/logo.jpg" alt="Crime RP"><span>Crime&nbsp;RP</span><button type="button" class="btn btn-donat" onclick="openDonat()">Донат</button><button type="button" class="btn btn-donat" onclick="openDonatCur()">Донат игровой валюты</button></div>
     <nav>
       <a href="index.html">Главная страница</a>
       <a href="ogame.html">О игре</a>
@@ -472,6 +472,45 @@
   </div>
 </div>
 
+<div class="modal" id="curModal" role="dialog" aria-modal="true" aria-labelledby="curTitle">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="closeCur()" aria-label="Закрыть">&times;</button>
+    <h3 id="curTitle">ДОНАТ ИГРОВОЙ ВАЛЮТЫ</h3>
+    <p class="donat-shop-title">Выбери пак доната</p>
+    <div class="pack-list">
+      <button type="button" class="pack-btn" data-cur="5.000.000 - 70 ₽" onclick="selectCur(this)">
+        <b>5.000.000 - 70 ₽</b>
+      </button>
+      <button type="button" class="pack-btn" data-cur="10.000.000 - 140 ₽" onclick="selectCur(this)">
+        <b>10.000.000 - 140 ₽</b>
+      </button>
+      <button type="button" class="pack-btn" data-cur="20.000.000 - 200 ₽" onclick="selectCur(this)">
+        <b>20.000.000 - 200 ₽</b>
+      </button>
+      <button type="button" class="pack-btn" data-cur="50.000.000 - 350 ₽" onclick="selectCur(this)">
+        <b>50.000.000 - 350 ₽</b>
+      </button>
+    </div>
+    <div class="donat-form">
+      <label>
+        <span>Сервер:</span>
+        <select id="curServer">
+          <option value="" disabled selected>Выбери сервер</option>
+          <option value="WHITE">WHITE</option>
+        </select>
+      </label>
+      <label>
+        <span>Никнейм:</span>
+        <input type="text" id="curNick" placeholder="Введи свой ник">
+      </label>
+      <div class="donat-price" id="curSelected">Не выбран пак</div>
+      <button type="button" class="btn btn-amber donat-submit" onclick="submitCur()">Отправить</button>
+      <div class="donat-hint">Выбери пак, заполни поля и нажми «Отправить» — заявка скопируется, и тебя перекинет в наш VK-чат.</div>
+      <div class="donat-copied" id="curCopied">Текст заявки скопирован — вставь его в сообщении (Ctrl+V).</div>
+    </div>
+  </div>
+</div>
+
 <script>
 function openDonat(){
   document.getElementById('donatModal').classList.add('open');
@@ -503,6 +542,35 @@ document.getElementById('donatModal').addEventListener('click', function(e){
 });
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape') closeDonat();
+});
+
+function openDonatCur(){
+  document.getElementById('curModal').classList.add('open');
+}
+function closeCur(){
+  document.getElementById('curModal').classList.remove('open');
+}
+var selectedCur = '';
+function selectCur(btn){
+  document.querySelectorAll('#curModal .pack-btn').forEach(function(p){ p.classList.remove('selected'); });
+  btn.classList.add('selected');
+  selectedCur = btn.getAttribute('data-cur');
+  document.getElementById('curSelected').textContent = 'Выбран пак: ' + selectedCur;
+}
+function submitCur(){
+  var server = document.getElementById('curServer').value.trim();
+  var nick = document.getElementById('curNick').value.trim();
+  if(!selectedCur){ alert('Сначала выбери пак доната'); return; }
+  var msg = 'Заявка на донат игровой валюты: ' + selectedCur;
+  if(server) msg += '\nСервер: ' + server;
+  if(nick) msg += '\nНикнейм: ' + nick;
+  if(navigator.clipboard){ navigator.clipboard.writeText(msg).then(function(){
+    document.getElementById('curCopied').style.display='block';
+  }).catch(function(){}); }
+  window.open('https://vk.me/join/llHSTC0ETkU4D8alajDoXpm53XZ515y4JcM=', '_blank');
+}
+document.getElementById('curModal').addEventListener('click', function(e){
+  if(e.target === this) closeCur();
 });
 </script>
 
