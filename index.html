@@ -454,12 +454,23 @@
     </div>
     <div class="donat-form">
       <label>
+        <span>Выбор сервера:</span>
+        <select id="donatServer">
+          <option value="" disabled selected>Выбери сервер</option>
+          <option value="WHITE">WHITE</option>
+        </select>
+      </label>
+      <label>
+        <span>Сколько доната:</span>
+        <input type="text" id="donatAmount" placeholder="Введи кол-во доната">
+      </label>
+      <label>
         <span>Никнейм:</span>
         <input type="text" id="donatNick" placeholder="Введи свой ник">
       </label>
       <div class="donat-price" id="donatSelected">Не выбран пак</div>
       <button type="button" class="btn btn-amber donat-submit" onclick="submitDonat()">Отправить</button>
-      <div class="donat-hint">Выбери пак, введи ник и нажми «Отправить» — заявка скопируется, и тебя перекинет в наш VK-чат.</div>
+      <div class="donat-hint">Выбери пак, заполни поля и нажми «Отправить» — заявка скопируется, и тебя перекинет в наш VK-чат.</div>
       <div class="donat-copied" id="donatCopied">Текст заявки скопирован — вставь его в сообщении (Ctrl+V).</div>
     </div>
   </div>
@@ -480,10 +491,14 @@ function selectPack(btn){
   document.getElementById('donatSelected').textContent = 'Выбран пак: ' + selectedPack;
 }
 function submitDonat(){
+  var server = document.getElementById('donatServer').value.trim();
+  var amount = document.getElementById('donatAmount').value.trim();
   var nick = document.getElementById('donatNick').value.trim();
   if(!selectedPack){ alert('Сначала выбери пак доната'); return; }
-  if(!nick){ alert('Введи свой никнейм'); return; }
-  var msg = 'Заявка на донат: ' + selectedPack + '\nНикнейм: ' + nick;
+  var msg = 'Заявка на донат: ' + selectedPack;
+  if(server) msg += '\nСервер: ' + server;
+  if(amount) msg += '\nСколько доната: ' + amount;
+  if(nick) msg += '\nНикнейм: ' + nick;
   if(navigator.clipboard){ navigator.clipboard.writeText(msg).then(function(){
     document.getElementById('donatCopied').style.display='block';
   }).catch(function(){}); }
