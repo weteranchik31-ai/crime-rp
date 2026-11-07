@@ -38,13 +38,6 @@
     border-bottom:1px solid var(--line);
   }
   .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .header-balance{
-    background:var(--bg2);border-bottom:1px solid var(--line);
-    padding:14px 0
-  }
-  .header-balance .wrap{display:flex;align-items:center;justify-content:center;gap:12px}
-  .hb-label{font-size:14px;font-weight:700;color:var(--muted)}
-  .hb-value{font-size:20px;font-weight:900;color:var(--amber2);background:rgba(245,166,35,.08);border:1px dashed var(--amber);border-radius:8px;padding:4px 14px}
   .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
   .logo .badge{
     width:34px;height:34px;border-radius:8px;
@@ -92,10 +85,6 @@
   }
   .modal-box h3{font-size:22px;font-weight:900;margin-bottom:18px;color:var(--amber)}
   .donat-shop{margin-bottom:20px;border-top:1px solid var(--line);padding-top:14px}
-  .balance-box{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
-  .balance-item{background:rgba(245,166,35,.06);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-align:center}
-  .balance-item span{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:4px}
-  .balance-item b{font-size:20px;font-weight:900;color:var(--amber2)}
   .donat-shop-title{font-size:15px;font-weight:800;color:var(--txt);margin-bottom:12px}
   .pack-list{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:16px}
   .pack-btn{
@@ -293,13 +282,6 @@
   </div>
 </div>
 
-<div class="header-balance">
-  <div class="wrap">
-    <span class="hb-label">Баланс BC</span>
-    <b class="hb-value" id="mainBcBalance">0</b>
-  </div>
-</div>
-
 <header class="hero">
   <div class="wrap">
     <div class="hero-text">
@@ -457,10 +439,6 @@
   <div class="modal-box">
     <button type="button" class="modal-close" onclick="closeDonat()" aria-label="Закрыть">&times;</button>
     <h3 id="donatTitle">ДОНАТ</h3>
-    <div class="balance-box">
-      <div class="balance-item"><span>Баланс BC</span><b id="bcBalance">0</b></div>
-      <div class="balance-item"><span>Рубли</span><b id="rcBalance">0</b></div>
-    </div>
     <p class="donat-shop-title">Выбери пак доната</p>
     <div class="pack-list">
       <button type="button" class="pack-btn" data-pack="1к BC - 60 ₽" data-bc="1000" onclick="selectPack(this)">
