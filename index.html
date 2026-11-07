@@ -532,14 +532,10 @@ function closeDonat(){
   document.getElementById('donatModal').classList.remove('open');
 }
 var selectedPack = '';
-var bcBalance = 0;
 function selectPack(btn){
   document.querySelectorAll('#donatModal .pack-btn').forEach(function(p){ p.classList.remove('selected'); });
   btn.classList.add('selected');
   selectedPack = btn.getAttribute('data-pack');
-  var bc = parseInt(btn.getAttribute('data-bc')) || 0;
-  bcBalance += bc;
-  document.getElementById('bcBalance').textContent = bcBalance.toLocaleString('ru-RU');
   document.getElementById('donatSelected').textContent = 'Выбран пак: ' + selectedPack;
 }
 function submitDonat(){
