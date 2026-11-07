@@ -85,7 +85,11 @@
   }
   .modal-box h3{font-size:22px;font-weight:900;margin-bottom:18px;color:var(--amber)}
   .donat-shop{margin-bottom:20px;border-top:1px solid var(--line);padding-top:14px}
-.donat-shop-title{font-size:15px;font-weight:800;color:var(--txt);margin-bottom:12px}
+  .balance-box{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+  .balance-item{background:rgba(245,166,35,.06);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-align:center}
+  .balance-item span{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:4px}
+  .balance-item b{font-size:20px;font-weight:900;color:var(--amber2)}
+  .donat-shop-title{font-size:15px;font-weight:800;color:var(--txt);margin-bottom:12px}
   .pack-list{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:16px}
   .pack-btn{
     width:100%;text-align:center;background:linear-gradient(135deg,var(--amber2),var(--amber));
@@ -439,21 +443,25 @@
   <div class="modal-box">
     <button type="button" class="modal-close" onclick="closeDonat()" aria-label="Закрыть">&times;</button>
     <h3 id="donatTitle">ДОНАТ</h3>
+    <div class="balance-box">
+      <div class="balance-item"><span>Баланс BC</span><b id="bcBalance">0</b></div>
+      <div class="balance-item"><span>Рубли</span><b id="rcBalance">0</b></div>
+    </div>
     <p class="donat-shop-title">Выбери пак доната</p>
     <div class="pack-list">
-      <button type="button" class="pack-btn" data-pack="1к BC - 60 ₽" onclick="selectPack(this)">
+      <button type="button" class="pack-btn" data-pack="1к BC - 60 ₽" data-bc="1000" onclick="selectPack(this)">
         <b>1к BC - 60 ₽</b>
       </button>
-      <button type="button" class="pack-btn" data-pack="3к - 140 ₽" onclick="selectPack(this)">
+      <button type="button" class="pack-btn" data-pack="3к - 140 ₽" data-bc="3000" onclick="selectPack(this)">
         <b>3к - 140 ₽</b>
       </button>
-      <button type="button" class="pack-btn" data-pack="5к - 240 ₽" onclick="selectPack(this)">
+      <button type="button" class="pack-btn" data-pack="5к - 240 ₽" data-bc="5000" onclick="selectPack(this)">
         <b>5к - 240 ₽</b>
       </button>
-      <button type="button" class="pack-btn" data-pack="7к - 320 ₽" onclick="selectPack(this)">
+      <button type="button" class="pack-btn" data-pack="7к - 320 ₽" data-bc="7000" onclick="selectPack(this)">
         <b>7к - 320 ₽</b>
       </button>
-      <button type="button" class="pack-btn" data-pack="10к - 450 ₽" onclick="selectPack(this)">
+      <button type="button" class="pack-btn" data-pack="10к - 450 ₽" data-bc="10000" onclick="selectPack(this)">
         <b>10к - 450 ₽</b>
       </button>
     </div>
@@ -524,10 +532,14 @@ function closeDonat(){
   document.getElementById('donatModal').classList.remove('open');
 }
 var selectedPack = '';
+var bcBalance = 0;
 function selectPack(btn){
-  document.querySelectorAll('.pack-btn').forEach(function(p){ p.classList.remove('selected'); });
+  document.querySelectorAll('#donatModal .pack-btn').forEach(function(p){ p.classList.remove('selected'); });
   btn.classList.add('selected');
   selectedPack = btn.getAttribute('data-pack');
+  var bc = parseInt(btn.getAttribute('data-bc')) || 0;
+  bcBalance += bc;
+  document.getElementById('bcBalance').textContent = bcBalance.toLocaleString('ru-RU');
   document.getElementById('donatSelected').textContent = 'Выбран пак: ' + selectedPack;
 }
 function submitDonat(){
