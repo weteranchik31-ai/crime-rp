@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/jpeg" href="img/logo.jpg">
+<title>Кейсы и промокоды — Crime RP</title>
+<style>
+  :root{
+    --bg:#0d0d10;
+    --bg2:#14141a;
+    --panel:#1b1b23;
+    --line:#2a2a34;
+    --txt:#e8e6e0;
+    --muted:#9b978e;
+    --amber:#f5a623;
+    --amber2:#ffc24d;
+    --purple:#7a3cff;
+    --pink:#ff2d78;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",system-ui,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(13,13,16,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800}
+  .logo .badge-img{width:38px;height:38px;border-radius:9px;object-fit:cover;border:1px solid var(--amber)}
+  nav{display:flex;gap:16px;font-size:14px;flex-wrap:wrap}
+  nav a{color:var(--muted);font-weight:600;transition:color .2s}
+  nav a:hover{color:var(--amber)}
+  nav a.active{color:var(--amber)}
+  .btn{border:none;cursor:pointer;border-radius:8px;font-weight:700;font-size:14px;padding:11px 20px;color:#231500;background:linear-gradient(135deg,var(--amber2),var(--amber))}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+
+  .page-head{padding:50px 0 20px;text-align:center}
+  .page-head .kicker{display:inline-block;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:700;border:1px solid var(--line);border-radius:50px;padding:5px 14px;margin-bottom:16px;background:rgba(245,166,35,.06)}
+  .page-head h1{font-size:clamp(26px,4vw,38px);font-weight:900}
+
+  /* Баланс */
+  .balance-strip{max-width:420px;margin:14px auto 0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+  .balance-strip span{color:var(--muted);font-size:13px;font-weight:600}
+  .balance-strip b{font-size:20px;font-weight:900;color:var(--amber2)}
+
+  /* Промокод */
+  .promo{max-width:420px;margin:24px auto 40px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .promo h3{margin-bottom:6px}
+  .promo p{font-size:13px;color:var(--muted);margin-bottom:14px}
+  .promo-row{display:flex;gap:10px}
+  .promo-row input{flex:1;padding:11px 13px;border-radius:8px;border:1px solid var(--line);background:#12121a;color:var(--txt);font-size:14px;outline:none}
+  .promo-row input:focus{border-color:var(--amber)}
+  .promo-msg{margin-top:10px;font-size:13px;font-weight:700;min-height:20px}
+
+  /* Кейс */
+  .case-card{max-width:760px;margin:0 auto;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .case-banner{height:190px;background:linear-gradient(135deg,#1a1030,#3a1f63 50%,#1a1030);display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid var(--purple)}
+  .case-banner img{height:150px;object-fit:contain;filter:drop-shadow(0 8px 30px rgba(122,60,255,.5))}
+  .case-banner .glow{position:absolute;width:300px;height:120px;background:radial-gradient(circle,rgba(122,60,255,.4),transparent 70%)}
+  .case-body{padding:22px}
+  .case-body h2{text-align:center;font-size:24px;font-weight:900;margin-bottom:4px}
+  .case-body .sub{text-align:center;color:var(--purple);font-weight:700;font-size:13px;letter-spacing:1px;margin-bottom:18px}
+  .case-opens{text-align:center;font-size:13px;color:var(--muted);margin-bottom:16px}
+  .case-price{text-align:center;font-size:18px;font-weight:900;color:var(--amber2);margin-bottom:16px}
+  .open-btn{display:block;width:100%;max-width:340px;margin:0 auto;padding:15px;font-size:16px}
+
+  /* Результат */
+  .result{display:none;text-align:center;padding:20px;border:1px solid var(--amber);border-radius:14px;background:rgba(245,166,35,.06);margin-top:18px;margin-left:auto;margin-right:auto;max-width:440px}
+  .result.open{display:block}
+  .result .r-title{font-size:13px;color:var(--muted);margin-bottom:8px}
+  .result img{height:90px;object-fit:contain;border-radius:12px;margin-bottom:10px}
+  .result .r-name{font-size:22px;font-weight:900;color:var(--amber2)}
+  .result .r-win{font-size:13px;color:var(--muted);margin-top:6px}
+
+  /* Дроп */
+  .drop-title{margin:40px 0 18px;text-align:center;font-size:22px;font-weight:900}
+  .drop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;padding-bottom:70px}
+  .drop-item{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;transition:transform .2s,border-color .2s}
+  .drop-item:hover{transform:translateY(-3px);border-color:var(--purple)}
+  .drop-item .pic{height:90px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+  .drop-item .pic img{max-height:100%;max-width:100%;object-fit:contain;border-radius:10px}
+  .drop-item .noimg{font-size:34px;opacity:.5}
+  .drop-item b{font-size:14px;color:var(--txt)}
+  .drop-item .rarity{font-size:11px;color:var(--muted);margin-top:4px}
+
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px;text-align:center}
+
+  @media(max-width:900px){ nav{display:none} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="logo"><img class="badge-img" src="img/logo.jpg" alt="Crime RP"><span>Crime&nbsp;RP</span></div>
+    <nav>
+      <a href="index.html">Главная страница</a>
+      <a href="ogame.html">О игре</a>
+      <a href="case.html" class="active">Кейсы и промокоды</a>
+      <a href="obzor.html">Обзор</a>
+      <a href="servera.html">Сервера</a>
+      <a href="referal.html">Реферал</a>
+    </nav>
+  </div>
+</div>
+
+<header class="page-head">
+  <div class="wrap">
+    <span class="kicker">Кейсы и промокоды</span>
+    <h1>Игровая валюта, кейсы, награды</h1>
+  </div>
+</header>
+
+<div class="balance-strip">
+  <span>Баланс игровой валюты</span>
+  <b id="balCurrency">0 BC</b>
+</div>
+
+<section class="promo">
+  <h3>Промокод</h3>
+  <p>Введи промокод и получи награду: игровую валюту, кейс или услугу.</p>
+  <div class="promo-row">
+    <input type="text" id="promoInput" placeholder="Введи промокод" onkeydown="if(event.key==='Enter')applyPromo()">
+    <button class="btn" onclick="applyPromo()">Активировать</button>
+  </div>
+  <div class="promo-msg" id="promoMsg"></div>
+</section>
+
+<section class="case-card">
+  <div class="case-banner"><div class="glow"></div>
+    <img src="img/alpha.jpg" alt="Кейс">
+  </div>
+  <div class="case-body">
+    <h2>Форсаж по-краймовски</h2>
+    <div class="sub">КЕЙС</div>
+    <div class="case-opens" id="opensCount">Открытий: 0</div>
+    <div class="case-price">Цена открытия: 500 BC</div>
+    <button class="btn open-btn" id="openBtn" onclick="openCase()">Открыть кейс (500 BC)</button>
+    <div class="result" id="caseResult">
+      <div class="r-title">Твой выигрыш:</div>
+      <img id="resImg" src="" alt="">
+      <div class="r-name" id="resName"></div>
+      <div class="r-win">Награда зачислена на счёт</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="drop-title">Дроп кейса</h2>
+  <div class="drop-grid">
+    <div class="drop-item"><div class="pic"><img src="img/m4.jpg" alt="M4 Athader"></div><b>M4 Athader</b><div class="rarity">обычный</div></div>
+    <div class="drop-item"><div class="pic"><img src="img/tigr.jpg" alt="ТИГР"></div><b>ТИГР</b><div class="rarity">обычный</div></div>
+    <div class="drop-item"><div class="pic"><img src="img/motorets.jpg" alt="МОТОРЕЦ"></div><b>МОТОРЕЦ</b><div class="rarity">редкий</div></div>
+    <div class="drop-item"><div class="pic"><img src="img/tomas.jpg" alt="Паровозик Томас"></div><b>Паровозик Томас</b><div class="rarity">редкий</div></div>
+    <div class="drop-item"><div class="pic"><img src="img/alpha.jpg" alt="Альфа"></div><b>Альфа</b><div class="rarity">эпический</div></div>
+    <div class="drop-item"><div class="pic"><span class="noimg">🛠️</span></div><b>Gaz Tigr | Армия</b><div class="rarity">эпический</div></div>
+    <div class="drop-item"><div class="pic"><img src="img/kater.jpg" alt="Катер"></div><b>Катер</b><div class="rarity">легендарный</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Crime RP. Демонстрационный сайт.</div>
+</footer>
+
+<script>
+var balance = 1000;
+var currencyName = 'BC';
+var opensTotal = 0;
+var promoUsed = {};
+
+var drops = [
+  {name:'M4 Athader', img:'img/m4.jpg', rarity:'обычный', weight:20},
+  {name:'ТИГР', img:'img/tigr.jpg', rarity:'обычный', weight:20},
+  {name:'МОТОРЕЦ', img:'img/motorets.jpg', rarity:'редкий', weight:17},
+  {name:'Паровозик Томас', img:'img/tomas.jpg', rarity:'редкий', weight:15},
+  {name:'Альфа', img:'img/alpha.jpg', rarity:'эпический', weight:13},
+  {name:'Gaz Tigr | Армия', img:'', rarity:'эпический', weight:10},
+  {name:'Катер', img:'img/kater.jpg', rarity:'легендарный', weight:5}
+];
+
+function refreshBalance(){
+  document.getElementById('balCurrency').textContent = balance + ' ' + currencyName;
+  var btn = document.getElementById('openBtn');
+  btn.disabled = balance < 500;
+  btn.textContent = balance < 500 ? 'Недостаточно BC' : 'Открыть кейс (500 BC)';
+}
+
+function applyPromo(){
+  var code = document.getElementById('promoInput').value.trim().toUpperCase();
+  var msg = document.getElementById('promoMsg');
+  if(!code){ msg.style.color='#e5484d'; msg.textContent='Введи промокод'; return; }
+  if(promoUsed[code]){ msg.style.color='#e5484d'; msg.textContent='Этот промокод уже активирован'; return; }
+  var reward = getPromoReward(code);
+  if(!reward){ msg.style.color='#e5484d'; msg.textContent='Промокод не найден'; return; }
+  promoUsed[code] = true;
+  if(reward.type==='bc'){ balance += reward.amount; msg.style.color='#38c172'; msg.textContent='+'+reward.amount+' '+currencyName+' получено!'; }
+  else if(reward.type==='case'){ msg.style.color='#38c172'; msg.textContent='Кейс «'+reward.name+'» добавлен!'; }
+  else if(reward.type==='service'){ msg.style.color='#38c172'; msg.textContent='Услуга: '+reward.name+'!'; }
+  refreshBalance();
+}
+
+function getPromoReward(code){
+  var map = {
+    'START': {type:'bc', amount:100},
+    'FORSAGE': {type:'case', name:'Форсаж по-краймовски'},
+    'VIP': {type:'bc', amount:500},
+    'BONUS': {type:'bc', amount:250},
+    'CASE25': {type:'case', name:'Форсаж по-краймовски'}
+  };
+  return map[code] || null;
+}
+
+function pickDrop(){
+  var total = drops.reduce(function(s,d){return s+d.weight},0);
+  var r = Math.random()*total;
+  var acc = 0;
+  for(var i=0;i<drops.length;i++){ acc+=drops[i].weight; if(r<acc) return drops[i]; }
+  return drops[drops.length-1];
+}
+
+function openCase(){
+  if(balance < 500){ document.getElementById('caseResult').className='result open'; document.getElementById('resName').textContent='Недостаточно BC'; return; }
+  balance -= 500;
+  opensTotal++;
+  var drop = pickDrop();
+  var el = document.getElementById('caseResult');
+  el.className = 'result open';
+  var img=document.getElementById('resImg');
+  if(drop.img){ img.src=drop.img; img.style.display='block'; } else { img.style.display='none'; }
+  document.getElementById('resName').textContent = drop.name;
+  document.getElementById('opensCount').textContent = 'Открытий: '+opensTotal;
+  refreshBalance();
+}
+
+refreshBalance();
+</script>
+
+</body>
+</html>
