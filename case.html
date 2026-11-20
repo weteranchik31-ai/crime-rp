@@ -134,8 +134,8 @@
     <h2>Форсаж по-краймовски</h2>
     <div class="sub">КЕЙС</div>
     <div class="case-opens" id="opensCount">Открытий: 0</div>
-    <div class="case-price">Цена открытия: 500 BC</div>
-    <button class="btn open-btn" id="openBtn" onclick="openCase()">Открыть кейс (500 BC)</button>
+<div class="case-price">Цена открытия: 3000 BC</div>
+<button class="btn open-btn" id="openBtn" onclick="openCase()">Открыть кейс (3000 BC)</button>
     <div class="result" id="caseResult">
       <div class="r-title">Твой выигрыш:</div>
       <img id="resImg" src="" alt="">
@@ -163,7 +163,8 @@
 </footer>
 
 <script>
-var balance = 1000;
+var balance = 0;
+var CASE_PRICE = 3000;
 var currencyName = 'BC';
 var opensTotal = 0;
 var promoUsed = {};
@@ -181,8 +182,8 @@ var drops = [
 function refreshBalance(){
   document.getElementById('balCurrency').textContent = balance + ' ' + currencyName;
   var btn = document.getElementById('openBtn');
-  btn.disabled = balance < 500;
-  btn.textContent = balance < 500 ? 'Недостаточно BC' : 'Открыть кейс (500 BC)';
+  btn.disabled = balance < CASE_PRICE;
+  btn.textContent = balance < CASE_PRICE ? 'Недостаточно BC' : 'Открыть кейс ('+CASE_PRICE+' BC)';
 }
 
 function applyPromo(){
@@ -219,8 +220,8 @@ function pickDrop(){
 }
 
 function openCase(){
-  if(balance < 500){ document.getElementById('caseResult').className='result open'; document.getElementById('resName').textContent='Недостаточно BC'; return; }
-  balance -= 500;
+  if(balance < CASE_PRICE){ document.getElementById('caseResult').className='result open'; document.getElementById('resName').textContent='Недостаточно BC'; return; }
+  balance -= CASE_PRICE;
   opensTotal++;
   var drop = pickDrop();
   var el = document.getElementById('caseResult');
